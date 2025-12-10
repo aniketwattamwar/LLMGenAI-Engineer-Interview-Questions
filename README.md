@@ -12,6 +12,10 @@ Click the link above to access the complete list of questions and answers, organ
 - **Error Handling & Edge Cases** - User interruptions, infinite loops, and edge case management
 - **Evaluation & Testing** - Agent evaluation, RAG evaluation, and testing methodologies
 
+## Resources
+
+ - https://www.anthropic.com/engineering/multi-agent-research-system
+
 ## 📖 About
 
 I am maintaining this repo for myself as and when I learn new things. Many questions would be asked in an interview and many would be for learning.
