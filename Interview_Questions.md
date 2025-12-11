@@ -38,9 +38,9 @@ it does.
 
 **A.** Minor changes can lead to different paths and can be expensive with the wrong output given back. Agents are stateful and so if there is an error it might compound as we are calling many tools. System fails then restarting is a bad option we need resume where we stopped, for the user to still get a response. Adaptive approach has to be adopted with failures and crashes. If changes are made and new agents are added to the system, it should not break the existing system and agents workflow. Execution if synchronous won't scale and would be an issue, it should be asynchronous. Context should be passed correctly from one agent to next agent. Compression of text, summarization and memory techniques have to be implemented across the system once the context have increased significantly.
 
-### Q.
+### Q. Explain various guardrails for Agentic Systems?
 
-**A.**
+**A.** Agents can go in loops and cost you $$$ huge amount, set recursion_limit and max steps reached and force it to terminate. Tool Authorization where a layer of restrictions can be added and never to include api keys or root access to any tools. Misinterpretation of requests can lead to scenarios like sending 10k emails to customers, sending wrong info to someone else. In this scenario add Human in the loop to validate actions are correct or not. Pause the state and wait for command from the Human to proceed further. Schema validation and serialization is important while passing information from agent to agent, Use of libraries like Pydantic help in securing these issues in development itself. Personal Information must never be shown to LLMs or should never show the user. Add rules to hide them beforehand.
 
 ## Vector Databases & RAG
 
@@ -87,4 +87,8 @@ it does.
 **A.** Evaluate the final response that you get from the LLM after running the tool. Another way would be to check if the correct tool was called or not.
 And lastly check the entire trajectory that when a user asked a query, did it follow the path it should to give you the answer based on the input query.
 
-Q. 
+## Miscellaneous
+
+### Q. What and Why do we need Pydantic? How is it essential in productions AI systems?
+
+**A.** Pydantic is a data validation library and adopted by alot of them. A scenario where we want to make sure the response from an LLM is a valid JSON, pydantic helps here. LLMs might not return correct schema, datatype while responding and we should catch that while development itself not later. Its core functionality is built in Rust, so its very fast. Basically, it does schema validation, serialization, data cleaning and forces structed output whenever necessary. Example would be LLM returns a string '5', pydantic can convert it to integer 5 automatically.
