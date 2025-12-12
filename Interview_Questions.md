@@ -40,7 +40,12 @@ it does.
 
 ### Q. Explain various guardrails for Agentic Systems?
 
-**A.** Agents can go in loops and cost you $$$ huge amount, set recursion_limit and max steps reached and force it to terminate. Tool Authorization where a layer of restrictions can be added and never to include api keys or root access to any tools. Misinterpretation of requests can lead to scenarios like sending 10k emails to customers, sending wrong info to someone else. In this scenario add Human in the loop to validate actions are correct or not. Pause the state and wait for command from the Human to proceed further. Schema validation and serialization is important while passing information from agent to agent, Use of libraries like Pydantic help in securing these issues in development itself. Personal Information must never be shown to LLMs or should never show the user. Add rules to hide them beforehand.
+**A.** Agents can go in loops and cost you $$$ huge amount, set recursion_limit and max steps reached and force it to terminate. Tool Authorization where a layer of restrictions can be added and never to include api keys or root access to any tools. Misinterpretation of requests can lead to scenarios like sending 10k emails to customers, sending wrong info to someone else. In this scenario add Human in the loop to validate actions are correct or not. Pause the state and wait for command from the Human to proceed further. Schema validation and serialization is important while passing information from agent to agent, Use of libraries like Pydantic help in securing these issues in development itself. Personal Information must never be shown to LLMs or should never show the user. Add rules to hide them beforehand. 
+
+
+### Q. Common mistakes to avoid while creating Agents?
+
+**A.** Over complicate agents, keep it simple for the task and be specific for example for finance make it financial data analyst rather than research agent. Choose the right architecture. Everything does not require multi agents or strict flows. Understand what works for your use case. Neglecting production concerns like observability, monitoring, token usage, api calls, idle agents.
 
 ## Vector Databases & RAG
 
@@ -51,6 +56,12 @@ it does.
 ### Q. When you have a lot of data, would you store everything directly in the vector database?
 
 **A.** That approach won't help in getting the right answer or would give wrong answer. Vector databases like Qdrant has metadata filtering, indexing and more to quickly get the data that is relevant. So every vector can have a specific metadata associated with it. You modify filtering to HNSW while storing and searching of the data in vector database.
+
+
+### Q. How can you make you retrieval faster from vector databases?
+
+**A.**  HNSW indexing can be used where the retrieval is faster than traditional search in vector database. Hierarchical Navigable Small Worlds is an algorithm which will create a graph of your documents where the nodes are the docs and the edges are created based on how similar it it to the previous node or document. When we get a query, we select a node at random and check its neighbors whichever is the relevant to the query and keep on navigating to the closest. This graph is just 2 dimensional but once we combine it with a skip linked list concept it becomes hierarchical. All the nodes that we navigated through is reranked again adn the top k are taken as the most similar.
+So the improvement is from O(n) TC where n is the number of vectors to O(logN) TC which is significant improvement.
 
 ## Cost Optimization
 
