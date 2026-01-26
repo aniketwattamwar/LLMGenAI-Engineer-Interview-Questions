@@ -65,7 +65,7 @@ So the improvement is from O(n) TC where n is the number of vectors to O(logN) T
 
 ## Cost Optimization
 
-### Q. Gives ways to save costs in a multi agent system?
+### Q. Give 5 ways to save costs in a multi agent system?
 
 **A.** Semantic caching is a way where we can save money and time to get the response. Few queries might be very similar and the answer to it rarely changes like "How do I change my password". For such queries, you can semantic caching, since every user wont ask the same question the exact same way, we understand the intent and then check our cache like Redis for the answer. If it is above a threshold we answer it from the cache and never the trigger our multi agent system and save the time on the cost of LLM.
 
@@ -103,3 +103,43 @@ And lastly check the entire trajectory that when a user asked a query, did it fo
 ### Q. What and Why do we need Pydantic? How is it essential in productions AI systems?
 
 **A.** Pydantic is a data validation library and adopted by alot of them. A scenario where we want to make sure the response from an LLM is a valid JSON, pydantic helps here. LLMs might not return correct schema, datatype while responding and we should catch that while development itself not later. Its core functionality is built in Rust, so its very fast. Basically, it does schema validation, serialization, data cleaning and forces structed output whenever necessary. Example would be LLM returns a string '5', pydantic can convert it to integer 5 automatically.
+
+
+## Customer Support Agent Interview Questions
+
+
+### Q. You have an orchestrator routing to specialized sub-agents. What happens when a user provides a 'Compound Intent'—like 'I want to change my address because my latest bill was sent to the wrong place'? How does your architecture decide where to route that, and do you lose the billing context in the process?
+
+**A.** I would handle this with intent prioritization. I can create few session parameters to be primary and secondary intent. Based on the user's query the primary intent would be 'address change' and the orcehestrator would redirect it over there. Once that is complete it should ask a follow up like 'Let's fix your billing issue next?' This makes the customer feel heard and does not have to remind the AI agent again.
+
+### Q. If a Virtual Agent misinterprets a particular ask and triggers something that was not intended. How would handle this?
+
+**A.** I would add multi stage confirmation at steps where a decision has to be made or a decision would trigger an internal api, or workflow. The AI agent would ask "Do you want to change your address now? Can you please confirm by responding a Yes." This ensures the user is willingly triggering an action for the account.
+
+
+### Q. Will you still apply classical NLP techniques instead of Generative AI ? What advantages are there if LLM an interpret the same thing easily?
+
+**A.** Yes. I would implement classical NLP techniques if required. Although LLM can handle similar scenarios but LLMs in nature are non deterministic. In scnearios like zipcode, account number regex does a good job and the respons is an expected answer easily to validate and verify. LLM would be costly too and an unnecessary risk.
+
+
+### Q. Why should we spend $200k on an AI voicebot or chatbot to solve customer query if I can hire 5 new people?
+
+**A.** One of the biggest advantage would be an AI agent is always available to try to resolve the issues compared to a human/live agent. Live agents can solve customer issues, but issues that are repetitive can be redirected to AI, this would decrease the Time-To-Resolution metric. While analysing, we check the deflection rate where AI was able to solve the issue vs a human was required. The number of man hours saved and customer issue resolution metrics tend to be higher when AI chatbot/voicebots are in place.
+
+### Q. What metrics would you consider in multi agents sytemss in production?
+
+**A.** Metrics to validate the agentic workflows:
+
+    - Routing accuracy: Percentage of times the orchestratore rerouted to the correct category agent
+    - Context Retention Rate: How often the user had to repeat the information.
+    - Agentic Fallback Rate: How often the system hist a no-match and has to escalate to a human agent.
+    - Goal completion Rate: How often the AI agent was able to solve the user issue
+    - Time to Resolution: How long it took the AI agent to resolve the issue.
+    - Tool Call latency: How long does it take for the agent to repond back from tools. If it exceeds certain seconds, add latency masker(verbal filler).
+    - Cost per resolved session: How costly it gets per call
+
+### Q. If your Goal Completion Rate is high but your CSAT (Customer Satisfaction) is low, what is the likely culprit in your architecture?
+
+**A.** This happens because of Procedural Friction, where the bot is able to solve the issue but makes too many hoops for the user. Maybe the agent is asking for redundant information or verifying it again.
+
+
