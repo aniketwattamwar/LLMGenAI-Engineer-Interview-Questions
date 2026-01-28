@@ -46,6 +46,7 @@ Click the link above to access the complete list of questions and answers, organ
 ## Resources
 
  - https://www.anthropic.com/engineering/multi-agent-research-system
+ - [Context Engineer](https://arxiv.org/pdf/2507.13334)
 
 ## 📖 About
 
