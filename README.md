@@ -1,7 +1,10 @@
 # AI Engineer Interview Questions
 
 A curated collection of interview questions and answers for AI, GenAI, LLM, RAG, Agentic applications and more.
-[LLM Interview Questions UI](https://llm-interview-questions.lovable.app/)
+
+<https://llm-interview-questions.lovable.app/>
+[![App Preview](image.png)](https://llm-interview-questions.lovable.app/)
+
 
 ## Table of Contents
 
