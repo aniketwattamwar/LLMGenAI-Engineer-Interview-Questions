@@ -1,8 +1,10 @@
-# AI Engineer Interview Questions
+# AI Engineer Interview Questions (Archived)
+
+## Please visit: https://genaidojo.io/
 
 A curated collection of interview questions and answers for AI, GenAI, LLM, RAG, Agentic applications and more.
 
-<https://llm-interview-questions.lovable.app/>
+
 [![App Preview](image.png)](https://llm-interview-questions.lovable.app/)
 
 
