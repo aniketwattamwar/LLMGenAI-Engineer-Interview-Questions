@@ -1,6 +1,6 @@
-# AI Engineer Interview Questions (Archived)
+# AI Engineer Interview Questions (Archived) (Not updated anymore)
 
-## Please visit: https://genaidojo.io/
+## Please visit for latest updates and questions: https://genaidojo.io/
 
 A curated collection of interview questions and answers for AI, GenAI, LLM, RAG, Agentic applications and more.
 
